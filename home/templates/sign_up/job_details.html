@@ -4,32 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Details Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Container and body styles */
-        .container-fluid {
-            background-color: #f8d5e0;
-            font-family: 'Poppins', sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0;
-            height: 100vh;
+            background-color: #f8d5e0;
+            font-family: 'Poppins', sans-serif;
         }
 
         .container {
-            background: white;
-            padding: 30px;
+            background-color: white;
+            padding: 20px;
             border-radius: 15px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-            max-width: 350px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 380px; /* Consistent width */
             width: 100%;
         }
 
-        /* Form styles */
+        .form-header {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
         .form-control {
-            border-radius: 7px;
+            border-radius: 8px;
             padding: 10px;
-            margin-top: 5px;
+            margin-top: 10px;
             border: 1px solid #ccc;
             width: 100%;
         }
@@ -38,10 +48,11 @@
             border-radius: 15px;
             border: 0;
             color: #fff;
-            padding: 10px;
+            padding: 13px 20px;
             margin-top: 20px;
             width: 100%;
             cursor: pointer;
+            font-size: 15px;
             transition: background-color 0.3s ease;
         }
 
@@ -52,39 +63,20 @@
         .btn-primary-custom:hover {
             background-color: #333;
         }
-
-        .link-custom {
-            color: purple;
-        }
-
-        /* Centered header */
-        .form-header {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
     </style>
 </head>
 <body>
-
-<div class="container-fluid">
     <div class="container">
         <h2 class="form-header">Job Details</h2>
-        <form action="/submit-form" method="post">
-            <label for="companyName">Company Name</label>
-            <input type="text" id="companyName" name="companyName" class="form-control">
-
-            <label for="designation">Designation</label>
-            <input type="text" id="designation" name="designation" class="form-control">
-
-            <label for="location">Location</label>
-            <input type="text" id="location" name="location" class="form-control">
-
-            <!-- The Next button -->
-            <button type="submit" class="btn-custom btn-primary-custom">Next</button>
+        <form action="/submit-form">
+            <!-- Add your form fields here -->
+            <input type="text" class="form-control" placeholder="Job Title">
+            <input type="text" class="form-control" placeholder="Company Name">
+            <input type="text" class="form-control" placeholder="Location">
+            <input type="number" class="form-control" placeholder="Salary" min="0">
+            <input type="text" class="form-control" placeholder="Experience Required">
+            <button type="submit" class="btn-custom btn-primary-custom">Submit</button>
         </form>
     </div>
-</div>
-
 </body>
 </html>

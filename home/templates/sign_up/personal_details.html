@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Details Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
     <style>
         * {
             margin: 0;
@@ -11,116 +13,111 @@
             box-sizing: border-box;
         }
 
-        /* Body and container settings */
         body, html {
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: #f8d5e0;
+            font-family: 'Poppins', sans-serif;
         }
 
         .container {
-            max-width: 400px; /* Reduced width */
-            padding: 20px; /* Reduced padding */
+            max-width: 380px;
+            width: 100%;
+            padding: 20px;
             background-color: white;
             border-radius: 15px;
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 15px; /* Reduced margin */
+            margin-bottom: 20px;
             font-size: 24px;
         }
 
-        /* Form styles */
         form {
             display: flex;
             flex-direction: column;
         }
 
-        label {
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
         input[type="text"],
         input[type="file"] {
-            padding: 10px; /* Reduced padding for inputs */
+            padding: 10px;
             margin-top: 10px;
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 16px;
         }
 
-        .add-btn {
-            background-color: black;
-            color: #fff;
-            border: none;
-            padding: 8px 12px; /* Reduced padding */
-            margin-top: 10px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 50px;
-            align-self: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .add-btn:hover {
-            background-color: #333;
-        }
-
         .next-btn {
             background-color: black;
             color: #fff;
             border: none;
-            padding: 12px 18px; /* Reduced padding */
-            margin-top: 20px;
-            border-radius: 25px;
+            border-radius: 15px;
             cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
+            font-size: 15px;
+            padding: 12px 20px;
+            margin-top: 20px;
             width: 100%;
+            transition: background-color 0.3s ease;
         }
 
         .next-btn:hover {
             background-color: #333;
         }
 
+        .input-container {
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .input-container input {
+            padding-right: 40px; /* Space for icon */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .input-container .fa-plus {
+            position: absolute;
+            right: 10px; /* Positioning icon */
+            top: 57%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        {% comment %} \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ {% endcomment %}
         .file-input-with-icon {
             position: relative;
+            margin-top: 10px;
         }
 
         .file-input-with-icon input[type="file"] {
-            padding-right: 40px;
-            padding-left: 40px;
-        }
-
-        .file-input-with-icon::before {
-            content: 'Upload';
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
+            padding-right: 40px; /* Space for icon */
+            border: 1px solid #ccc;
+            border-radius: 8px;
             font-size: 16px;
-            pointer-events: none;
+            width: 100%;
         }
 
-        .file-input-with-icon::after {
-            content: '';
+        .file-input-with-icon i {
             position: absolute;
-            right: 15px;
-            top: 50%;
+            right: 10px; /* Adjust based on icon size and padding */
+            top: 55%;
             transform: translateY(-50%);
-            width: 24px;
-            height: 24px;
-            background-image: url('path/to/gallery-icon.png');
-            background-size: cover;
-            pointer-events: none;
+            font-size: 20px; /* Adjust based on icon size */
+            color: #000;
         }
+        {% comment %} video {% endcomment %}
+        
+
+        
+        
     </style>
 </head>
 <body>
@@ -132,11 +129,23 @@
             <input type="text" id="interests" name="interests" placeholder="Interests">
             <input type="text" id="smoking" name="smoking" placeholder="Smoking Habits">
             <input type="text" id="drinking" name="drinking" placeholder="Drinking Habits">
-            <input type="text" id="qualifications" name="qualifications" placeholder="Qualifications">
-            <button type="button" class="add-btn">+</button>
-            <input type="file" id="profile-pic" name="profile-pic" placeholder="Profile Pic">
-            <input type="file" id="images" name="images" multiple placeholder="Add More Images">
-            <input type="file" id="short-reel" name="short-reel" placeholder="Short Reel">
+            <div class="input-container">
+                <input type="text" id="qualifications" name="qualifications" placeholder="Qualifications">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            
+            <div class="file-input-with-icon">
+                <input type="file" id="profile-pic" name="profile-pic">
+                <i class="fa-regular fa-image"></i>
+            </div>
+            <div class="file-input-with-icon">
+                <input type="file" id="images" name="images" multiple>
+                <i class="fa-regular fa-image"></i>
+            </div>
+            <div class="file-input-with-icon">
+                <input type="file" id="short-reel" name="short-reel">
+                <i class="fa-solid fa-video"></i>
+            </div>
             <button type="submit" class="next-btn">Next</button>
         </form>
     </div>

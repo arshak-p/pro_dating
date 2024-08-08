@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Status Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif; /* Apply Poppins font globally */
         }
 
         /* Body and container settings */
@@ -27,21 +29,21 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
-            max-width: 500px;
+            max-width: 365px;
             width: 100%;
         }
 
         /* Form Header */
         .form-header {
-            font-size: 30px; /* Original text style */
-            margin-bottom: 30px;
-            font-weight: bold; /* Original text style */
             text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
         }
 
         /* Checkbox Group */
         .checkbox-group {
-            margin-top: 15px; /* Original text style */
+            margin-top: 15px;
+            padding-left: 20px; /* Shift checkbox column slightly to the right */
         }
 
         .checkbox-group label {
@@ -53,20 +55,20 @@
         }
 
         .checkbox-group input[type="checkbox"] {
-            margin-left: 10px; /* Space between text and checkbox */
+            margin-right: 10px; /* Space between checkbox and text */
         }
 
         /* Next Button */
         .next-button {
             background-color: black;
             color: #fff;
-            border-radius: 25px; /* More rounded corners */
+            border-radius: 15px; 
             border: 0;
-            padding: 15px 20px;
+            padding: 9px;
             margin-top: 30px;
             width: 100%;
             cursor: pointer;
-            font-size: 18px; /* Original text style */
+            font-size: 15px; /* Original text style */
             transition: background-color 0.3s ease; /* Smooth transition for hover effect */
         }
 
@@ -81,12 +83,26 @@
         <div class="form-container">
             <h2 class="form-header">Job Status</h2>
             <div class="checkbox-group">
-                <label><span>Employer</span><input type="checkbox" name="status" value="employer"></label>
-                <label><span>Employee</span><input type="checkbox" name="status" value="employee"></label>
-                <label><span>Job Seeker</span><input type="checkbox" name="status" value="job-seeker"></label>
+                <label><input type="checkbox" name="status" value="employer"> Employer</label>
+                <label><input type="checkbox" name="status" value="employee"> Employee</label>
+                <label><input type="checkbox" name="status" value="job-seeker"> Job Seeker</label>
             </div>
             <button class="next-button">Next</button>
         </div>
     </div>
+    <script>
+        // JavaScript to ensure only one checkbox is selected at a time
+        const checkboxes = document.querySelectorAll('.checkbox-group input[type="checkbox"]');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    checkboxes.forEach(box => {
+                        if (box !== this) box.checked = false;
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
