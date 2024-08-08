@@ -5,153 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Status Form</title>
     <style>
+        /* Global Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Center the form on the page */
-        body, html {
-            height: 100%;
+        /* Body and container settings */
+        .container-fluid {
+            background-color: #f8d5e0;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
+            height: 100vh;
+            padding: 20px; /* Added padding for better mobile view */
         }
 
-        /* Container styles */
-        .container {
-            max-width: 600px; /* Increased width */
-            padding: 30px; /* Increased padding */
-            background-color: #fff;
-            border-radius: 12px; /* Slightly increased border radius */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Enhanced box shadow */
-        }
-
-        /* Form styles */
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-top: 15px; /* Increased margin */
-            font-weight: bold;
-            font-size: 18px; /* Increased font size */
-        }
-
-        input[type="text"],
-        input[type="file"] {
-            padding: 15px; /* Increased padding */
-            margin-top: 10px; /* Increased margin */
-            border: 1px solid #ccc;
-            border-radius: 8px; /* Slightly increased border radius */
-            position: relative;
-            font-size: 16px; /* Increased font size */
-        }
-
-        .add-btn {
-            background-color: #ff69b4;
-            color: #fff;
-            border: none;
-            padding: 10px 15px; /* Increased padding */
-            margin-top: 10px; /* Increased margin */
-            border-radius: 8px; /* Slightly increased border radius */
-            cursor: pointer;
-            font-size: 16px; /* Increased font size */
-        }
-
-        .next-btn {
-            background-color: #ff69b4;
-            color: #fff;
-            border: none;
-            padding: 15px 20px; /* Increased padding */
-            margin-top: 30px; /* Increased margin */
-            border-radius: 8px; /* Slightly increased border radius */
-            cursor: pointer;
-            font-size: 18px; /* Increased font size */
-        }
-
-        .file-input-with-icon {
-            position: relative;
-        }
-
-        .file-input-with-icon input[type="file"] {
-            padding-right: 50px; /* Adjusted padding */
-            padding-left: 50px; /* Adjusted padding */
-        }
-
-        .file-input-with-icon::before {
-            content: 'Upload';
-            position: absolute;
-            left: 15px; /* Adjusted position */
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
-            font-size: 16px; /* Increased font size */
-            pointer-events: none;
-        }
-
-        .file-input-with-icon::after {
-            content: '';
-            position: absolute;
-            right: 15px; /* Adjusted position */
-            top: 50%;
-            transform: translateY(-50%);
-            width: 24px; /* Adjusted size */
-            height: 24px; /* Adjusted size */
-            background-image: url('path/to/gallery-icon.png');
-            background-size: cover;
-            pointer-events: none;
-        }
-
-        /* Custom styles for the form */
         .form-container {
-            max-width: 600px; /* Increased width */
-            padding: 30px; /* Increased padding */
-            background-color: #fff;
-            border-radius: 12px; /* Slightly increased border radius */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Enhanced box shadow */
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+            max-width: 500px;
+            width: 100%;
         }
 
+        /* Form Header */
         .form-header {
-            font-size: 30px; /* Increased font size */
-            margin-bottom: 30px; /* Increased margin */
+            font-size: 30px; /* Original text style */
+            margin-bottom: 30px;
+            font-weight: bold; /* Original text style */
+            text-align: center;
         }
 
+        /* Checkbox Group */
         .checkbox-group {
-            margin-top: 15px; /* Increased margin */
+            margin-top: 15px; /* Original text style */
         }
 
         .checkbox-group label {
-            display: block;
-            margin-bottom: 15px; /* Increased margin */
+            display: flex;
+            align-items: center; /* Aligns items vertically */
+            margin-bottom: 15px; /* Original text style */
             font-weight: normal;
-            font-size: 18px; /* Increased font size */
+            font-size: 18px; /* Original text style */
         }
 
+        .checkbox-group input[type="checkbox"] {
+            margin-left: 10px; /* Space between text and checkbox */
+        }
+
+        /* Next Button */
         .next-button {
-            background-color: #ff69b4;
+            background-color: black;
             color: #fff;
-            border: none;
-            padding: 15px 20px; /* Increased padding */
-            margin-top: 30px; /* Increased margin */
-            border-radius: 8px; /* Slightly increased border radius */
+            border-radius: 25px; /* More rounded corners */
+            border: 0;
+            padding: 15px 20px;
+            margin-top: 30px;
+            width: 100%;
             cursor: pointer;
-            font-size: 18px; /* Increased font size */
+            font-size: 18px; /* Original text style */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        /* Hover effect for button */
+        .next-button:hover {
+            background-color: #333; /* Slightly lighter black on hover */
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h2 class="form-header">Job Status</h2>
-        <div class="checkbox-group">
-            <label><input type="checkbox" name="status" value="employer"> Employer</label>
-            <label><input type="checkbox" name="status" value="employee"> Employee</label>
-            <label><input type="checkbox" name="status" value="job-seeker"> Job Seeker</label>
+    <div class="container-fluid">
+        <div class="form-container">
+            <h2 class="form-header">Job Status</h2>
+            <div class="checkbox-group">
+                <label><span>Employer</span><input type="checkbox" name="status" value="employer"></label>
+                <label><span>Employee</span><input type="checkbox" name="status" value="employee"></label>
+                <label><span>Job Seeker</span><input type="checkbox" name="status" value="job-seeker"></label>
+            </div>
+            <button class="next-button">Next</button>
         </div>
-        <button class="next-button">Next</button>
     </div>
 </body>
 </html>
