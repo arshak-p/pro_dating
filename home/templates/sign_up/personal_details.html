@@ -113,7 +113,7 @@
             font-size: 20px; /* Adjust based on icon size */
             color: #000;
         }
-        {% comment %} video {% endcomment %}
+       
         
 
         
@@ -135,7 +135,8 @@
             </div>
             
             <div class="file-input-with-icon">
-                <input type="file" id="profile-pic" name="profile-pic">
+                
+                <input type="file" id="profile-pic" name="profile-pic" >
                 <i class="fa-regular fa-image"></i>
             </div>
             <div class="file-input-with-icon">
@@ -149,5 +150,13 @@
             <button type="submit" class="next-btn">Next</button>
         </form>
     </div>
+    <script>
+        document.querySelectorAll('.file-input-with-icon i').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const fileInput = this.previousElementSibling; // The input[type="file"]
+                fileInput.click(); // Trigger the file input dialog
+            });
+        });
+    </script>
 </body>
 </html>
