@@ -23,9 +23,9 @@
         }
 
         .container {
-            max-width: 380px;
+            max-width: 800px; /* Increased width for the entire form */
             width: 100%;
-            padding: 20px;
+            padding: 40px;
             background-color: white;
             border-radius: 15px;
             box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
@@ -34,7 +34,7 @@
         h2 {
             text-align: center;
             margin-bottom: 20px;
-            font-size: 24px;
+            font-size: 26px; /* Slightly larger font size */
         }
 
         form {
@@ -43,12 +43,14 @@
         }
 
         input[type="text"],
+        input[type="date"],
         input[type="file"] {
-            padding: 10px;
-            margin-top: 10px;
+            padding: 8px; /* Reduced padding */
+            margin-top: 10px; /* Adjusted margin for spacing */
             border: 1px solid #ccc;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 14px; /* Smaller font size */
+            width: 100%; /* Full width */
         }
 
         .next-btn {
@@ -57,9 +59,9 @@
             border: none;
             border-radius: 15px;
             cursor: pointer;
-            font-size: 15px;
-            padding: 12px 20px;
-            margin-top: 20px;
+            font-size: 16px; /* Slightly larger font size */
+            padding: 10px 20px; /* Adjusted padding */
+            margin-top: 20px; /* Adjusted margin for spacing */
             width: 100%;
             transition: background-color 0.3s ease;
         }
@@ -70,61 +72,69 @@
 
         .input-container {
             position: relative;
-            margin-top: 10px;
+            margin-top: 10px; /* Adjusted margin for spacing */
         }
 
         .input-container input {
             padding-right: 40px; /* Space for icon */
             border: 1px solid #ccc;
             border-radius: 8px;
-            font-size: 16px;
-            width: 100%;
+            font-size: 14px; /* Smaller font size */
+            width: 100%; /* Full width */
         }
 
         .input-container .fa-plus {
             position: absolute;
             right: 10px; /* Positioning icon */
-            top: 57%;
+            top: 50%;
             transform: translateY(-50%);
-            font-size: 20px;
+            font-size: 18px; /* Smaller icon size */
             color: #000;
             cursor: pointer;
         }
 
-        {% comment %} \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ {% endcomment %}
         .file-input-with-icon {
             position: relative;
-            margin-top: 10px;
+            margin-top: 10px; /* Adjusted margin for spacing */
         }
 
         .file-input-with-icon input[type="file"] {
+            opacity: 0; /* Hide the file input */
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-input-with-icon .placeholder-input {
             padding-right: 40px; /* Space for icon */
             border: 1px solid #ccc;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 14px; /* Smaller font size */
             width: 100%;
+            background-color: #f8f8f8;
+            cursor: pointer;
         }
 
         .file-input-with-icon i {
             position: absolute;
             right: 10px; /* Adjust based on icon size and padding */
-            top: 55%;
+            top: 50%;
             transform: translateY(-50%);
-            font-size: 20px; /* Adjust based on icon size */
+            font-size: 18px; /* Smaller icon size */
             color: #000;
+            cursor: pointer;
+            pointer-events: none; /* Make the icon unclickable */
         }
-       
-        
-
-        
-        
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Personal Details</h2>
         <form>
+            
             <input type="text" id="age" name="age" placeholder="Age">
+            <input type="date" id="dob" name="dob" placeholder="Date of Birth">
             <input type="text" id="hobbies" name="hobbies" placeholder="Hobbies">
             <input type="text" id="interests" name="interests" placeholder="Interests">
             <input type="text" id="smoking" name="smoking" placeholder="Smoking Habits">
@@ -133,28 +143,33 @@
                 <input type="text" id="qualifications" name="qualifications" placeholder="Qualifications">
                 <i class="fa-solid fa-plus"></i>
             </div>
-            
             <div class="file-input-with-icon">
-                
-                <input type="file" id="profile-pic" name="profile-pic" >
+                <input type="file" id="profile-pic" name="profile-pic">
+                <input type="text" class="placeholder-input" placeholder="Profile Pic" disabled>
                 <i class="fa-regular fa-image"></i>
             </div>
             <div class="file-input-with-icon">
-                <input type="file" id="images" name="images" multiple>
+                <input type="file" id="images" name="images">
+                <input type="text" class="placeholder-input" placeholder="Add More Images" disabled>
                 <i class="fa-regular fa-image"></i>
             </div>
             <div class="file-input-with-icon">
                 <input type="file" id="short-reel" name="short-reel">
+                <input type="text" class="placeholder-input" placeholder="Short Reel" disabled>
                 <i class="fa-solid fa-video"></i>
             </div>
             <button type="submit" class="next-btn">Next</button>
         </form>
     </div>
     <script>
-        document.querySelectorAll('.file-input-with-icon i').forEach(icon => {
-            icon.addEventListener('click', function() {
-                const fileInput = this.previousElementSibling; // The input[type="file"]
-                fileInput.click(); // Trigger the file input dialog
+        document.querySelectorAll('.file-input-with-icon input[type="file"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const placeholder = this.nextElementSibling;
+                if (this.files.length > 0) {
+                    placeholder.value = this.files[0].name;
+                } else {
+                    placeholder.value = "";
+                }
             });
         });
     </script>
