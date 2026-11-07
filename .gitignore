@@ -1,0 +1,6 @@
+# local database, caches and secrets
+db.sqlite3
+__pycache__/
+*.pyc
+.env
+venv/
